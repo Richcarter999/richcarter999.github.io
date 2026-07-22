@@ -3,90 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 <title>김태웅 · AI/NLP 연구원</title>
 <meta name="description" content="의료 LLM(GMR) 학습·양자화·vLLM 서빙 AI/NLP 연구원. Kaggle 수학 분류 3위, AIMO2 은메달.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+  /* Astryx-neutral inspired tokens — flat surfaces, shadow lift, auto light/dark */
   :root{
-    --fg:#0f172a;--mut:#64748b;--acc:#6366f1;--acc2:#8b5cf6;--gold:#d97706;
-    --line:#e9edf3;--bg:#f6f7fb;--card:#fff;--chip:#eef2ff;--chipfg:#4338ca;
+    color-scheme:light dark;
+    --accent:light-dark(#4f46e5,#a5b4fc);
+    --accent-soft:light-dark(#eef2ff,#312e81);
+    --body:light-dark(#f1f1f1,#0f0f10);
+    --surface:light-dark(#ffffff,#1b1b1c);
+    --raised:light-dark(#ffffff,#242426);
+    --fg:light-dark(#171717,#ededed);
+    --mut:light-dark(#737373,#a3a3a3);
+    --border:light-dark(#e5e5e5,#2e2e30);
+    --chip:light-dark(#f5f5f5,#2a2a2c);
+    --gold:light-dark(#b45309,#fbbf24);
+    --gold-bg:light-dark(#fffbeb,#3a2e10);
+    --r-page:24px;--r-card:14px;--r-el:9px;
+    --shadow:0 1px 2px light-dark(rgba(0,0,0,.05),rgba(0,0,0,.4)),0 4px 16px light-dark(rgba(0,0,0,.04),rgba(0,0,0,.25));
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;font-family:'Inter','Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
-    color:var(--fg);background:var(--bg);line-height:1.68;font-size:15px;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  body{margin:0;font-family:var(--font);color:var(--fg);background:var(--body);
+    line-height:1.65;font-size:15px;-webkit-font-smoothing:antialiased;letter-spacing:-.1px}
+  .wrap{max-width:840px;margin:0 auto;padding:0 22px}
 
-  /* hero */
-  .hero{position:relative;color:#fff;padding:64px 0 78px;overflow:hidden;
-    background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 55%,#9333ea 100%)}
-  .hero::after{content:"";position:absolute;inset:0;opacity:.15;
-    background:radial-gradient(600px 200px at 15% 10%,#fff,transparent),radial-gradient(500px 240px at 90% 90%,#fff,transparent)}
-  .hero>.wrap{position:relative;z-index:1}
-  .eyebrow{font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:#e0e7ff;font-weight:600}
-  .hero h1{margin:8px 0 2px;font-size:40px;font-weight:800;letter-spacing:-1px}
-  .hero h1 small{font-size:17px;font-weight:400;opacity:.8;margin-left:8px}
-  .hero .role{font-size:17px;font-weight:600;color:#f5f3ff}
-  .hero p{margin:16px 0 0;max-width:660px;color:#ede9fe;font-size:15px}
-  .stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-  .stat{background:rgba(255,255,255,.14);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.22);
-    border-radius:12px;padding:11px 16px;min-width:120px}
-  .stat b{display:block;font-size:20px;font-weight:800;letter-spacing:-.5px}
-  .stat span{font-size:12px;color:#e0e7ff}
+  header{padding:56px 0 30px}
+  .kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700}
+  h1{margin:10px 0 4px;font-size:38px;font-weight:800;letter-spacing:-1.2px}
+  h1 small{font-size:16px;font-weight:400;color:var(--mut);margin-left:8px;letter-spacing:0}
+  .role{font-size:16.5px;font-weight:600;color:var(--fg)}
+  .lead{color:var(--mut);margin:14px 0 0;max-width:660px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-el);
+    padding:12px 14px;box-shadow:var(--shadow)}
+  .stat b{display:block;font-size:19px;font-weight:800;letter-spacing:-.5px}
+  .stat span{font-size:11.5px;color:var(--mut)}
 
-  main{padding:30px 0 70px}
-  section{background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:24px 26px;margin:16px 0;box-shadow:0 1px 2px rgba(16,24,40,.04)}
-  h2{display:flex;align-items:center;gap:8px;font-size:12.5px;text-transform:uppercase;
-    letter-spacing:1.8px;color:var(--acc);margin:0 0 18px;font-weight:700}
-  h2 .dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2))}
-  h3{font-size:17.5px;margin:0 0 2px;font-weight:700}
-  .meta{color:var(--mut);font-size:13px;margin-bottom:10px;font-weight:500}
-  ul{margin:8px 0 0;padding-left:19px}
-  li{margin:5px 0}
-  li::marker{color:var(--acc)}
-  .job{padding:18px 0;border-top:1px solid var(--line)}
+  main{padding:14px 0 64px}
+  section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);
+    padding:22px 26px;margin:14px 0;box-shadow:var(--shadow)}
+  h2{display:flex;align-items:center;gap:8px;font-size:12px;text-transform:uppercase;
+    letter-spacing:1.6px;color:var(--accent);margin:0 0 16px;font-weight:700}
+  h2::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--accent)}
+  h3{font-size:17px;margin:0 0 2px;font-weight:700}
+  .meta{color:var(--mut);font-size:13px;margin-bottom:9px;font-weight:500}
+  ul{margin:8px 0 0;padding-left:18px}li{margin:5px 0}li::marker{color:var(--accent)}
+  .job{padding:17px 0;border-top:1px solid var(--border)}
   .job:first-of-type{border-top:0;padding-top:0}
-  .win{font-weight:600;color:#1e293b}
-  .hl{color:var(--acc);font-weight:700}
-  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
-  .chip{background:var(--chip);color:var(--chipfg);border-radius:7px;padding:4px 11px;font-size:12px;font-weight:500}
+  .win{font-weight:600}
+  .hl{color:var(--accent);font-weight:700}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+  .chip{background:var(--chip);border:1px solid var(--border);border-radius:var(--r-el);
+    padding:3px 10px;font-size:12px;color:var(--fg)}
   .kg{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .rank{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-weight:700;
-    font-size:12.5px;padding:3px 11px;border-radius:20px;white-space:nowrap}
-  .skillrow{margin:9px 0;display:flex;gap:12px}
-  .skillrow b{flex:0 0 108px;color:var(--acc);font-weight:600;font-size:13px}
+  .rank{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold);
+    font-weight:700;font-size:12px;padding:2px 10px;border-radius:20px;white-space:nowrap}
+  .skillrow{margin:9px 0;display:flex;gap:14px}
+  .skillrow b{flex:0 0 104px;color:var(--accent);font-weight:600;font-size:13px}
   .skillrow span{flex:1}
-  code{background:#f1f5f9;padding:1px 6px;border-radius:5px;font-size:13px}
-  a{color:var(--acc);text-decoration:none;font-weight:500}
-  a:hover{text-decoration:underline}
-  footer{color:var(--mut);font-size:13px;text-align:center;padding:8px 0 50px}
-  @media(max-width:560px){.hero h1{font-size:32px}.skillrow{flex-direction:column;gap:2px}.skillrow b{flex:none}}
-  @media print{body{background:#fff}.hero{background:#4f46e5 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    section{break-inside:avoid;box-shadow:none}}
+  code{background:var(--chip);border:1px solid var(--border);padding:1px 6px;border-radius:5px;font-size:12.5px}
+  a{color:var(--accent);text-decoration:none;font-weight:500}a:hover{text-decoration:underline}
+  footer{color:var(--mut);font-size:12.5px;text-align:center;padding:6px 0 48px}
+  @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:31px}
+    .skillrow{flex-direction:column;gap:2px}.skillrow b{flex:none}}
+  @media print{:root{color-scheme:light}body{background:#fff}section,.stat{box-shadow:none;break-inside:avoid}}
 </style>
 </head>
 <body>
 
-<div class="hero"><div class="wrap">
-  <div class="eyebrow">AI / NLP Researcher · Medical LLM</div>
+<header><div class="wrap">
+  <div class="kicker">AI / NLP Researcher · Medical LLM</div>
   <h1>김태웅 <small>Kim Taewoong</small></h1>
   <div class="role">의료 LLM · 생성형 의무기록(GMR) 연구·개발</div>
-  <p>의료 LLM(GMR)을 학습·양자화·vLLM 서빙까지 프로덕션으로 구현한 AI/NLP 연구원. 2019.11~현재(6년+). 한국어 의료 NLP로 시작해 정밀의료 R&amp;D를 거쳐 현재 GMR을 담당.</p>
+  <p class="lead">의료 LLM(GMR)을 학습·양자화·vLLM 서빙까지 프로덕션으로 구현한 AI/NLP 연구원. 2019.11~현재(6년+). 한국어 의료 NLP로 시작해 정밀의료 R&amp;D를 거쳐 현재 GMR을 담당.</p>
   <div class="stats">
     <div class="stat"><b>6년+</b><span>의료 AI 실무</span></div>
-    <div class="stat"><b>3위 <span style="font-weight:400">/338</span></b><span>Kaggle 수학분류</span></div>
-    <div class="stat"><b>🥈 은메달</b><span>AIMO2 (87/2212)</span></div>
-    <div class="stat"><b>0.744</b><span>ScalpVision macro-F1</span></div>
+    <div class="stat"><b>3위<span style="font-weight:400"> /338</span></b><span>Kaggle 수학분류</span></div>
+    <div class="stat"><b>🥈 은메달</b><span>AIMO2 · 87/2212</span></div>
+    <div class="stat"><b>0.744</b><span>ScalpVision F1</span></div>
   </div>
-</div></div>
+</div></header>
 
 <main class="wrap">
 
 <section>
-  <h2><span class="dot"></span>요약</h2>
+  <h2>요약</h2>
   <ul>
     <li>LLM 파인튜닝(SFT/LoRA/DPO/GRPO)·양자화(GPTQ/AWQ/W4A16)·vLLM 서빙까지 학습–배포 전 과정 실무.</li>
     <li>Kaggle 개인 참가 — 수학문제 분류 <span class="hl">3위/338팀</span>, AIMO Progress Prize 2 <span class="hl">은메달(87위/2212팀)</span>.</li>
@@ -95,7 +101,7 @@
 </section>
 
 <section>
-  <h2><span class="dot"></span>경력</h2>
+  <h2>경력</h2>
   <div class="job">
     <h3>Puzzle AI (퍼즐에이아이) — AI/NLP 연구원</h3>
     <div class="meta">2019. 11 ~ 현재 · 6년+</div>
@@ -107,16 +113,16 @@
       <li>Gemma-4 구조화 출력(JSON/xgrammar) 오류 진단·해결, GBNF 제약 디코딩 적용</li>
       <li><code>gmr_fastapi_server</code> merged PR 53건 — 라우터별 모델·config 도구, 미들웨어 버그 수정, 보안 하드닝, API/에러 스펙</li>
       <li>아산·충남대병원 의료문서(SOAP·퇴원요약·수술기록·바이탈) 데이터·모델 파이프라인 구축, 현장 시연 대응</li>
-      <li>(2020~2022) 의료 한국어 자동 띄어쓰기·의도 분류·텍스트 교정 모델 개발</li>
+      <li>(2020~2022) 한국어 의료 NLP — 텍스트 정규화·분류·교정</li>
       <li>(2022~2024) 정밀의료팀 R&amp;D — 유전체 변이 분석(germline/somatic·VCF·driver mutation·LOH), 생존분석(UK Biobank·ASXL1), 구어체 증상 추출 NLP</li>
     </ul>
     <div class="chips"><span class="chip">Python</span><span class="chip">Gemma/Qwen/GPT-OSS</span><span class="chip">LoRA·DPO·GRPO</span><span class="chip">GPTQ·AWQ·W4A16</span><span class="chip">vLLM</span><span class="chip">FastAPI</span><span class="chip">Kubernetes·Ceph</span></div>
-    <p class="meta" style="margin-top:14px">오픈소스: vLLM·SGLang·llm-compressor에 Gemma 계열 버그 4건 리포트</p>
+    <p class="meta" style="margin-top:13px">오픈소스: vLLM·SGLang·llm-compressor에 Gemma 계열 버그 4건 리포트</p>
   </div>
 </section>
 
 <section>
-  <h2><span class="dot"></span>AI 프로젝트</h2>
+  <h2>AI 프로젝트</h2>
   <div class="job">
     <h3>헬스케어 CV</h3>
     <div class="meta">2025. 09 ~</div>
@@ -141,7 +147,7 @@
 </section>
 
 <section>
-  <h2><span class="dot"></span>대회 · Kaggle (개인 참가)</h2>
+  <h2>대회 · Kaggle (개인 참가)</h2>
   <div class="job">
     <div class="kg"><h3>KAChallenges: Classifying Math Problems</h3><span class="rank">3위 / 338팀</span></div>
     <div class="meta">2025. 05 · 수학문제 8-topic 분류 (NLP)</div>
@@ -156,7 +162,7 @@
 </section>
 
 <section>
-  <h2><span class="dot"></span>보유 기술</h2>
+  <h2>보유 기술</h2>
   <div class="skillrow"><b>언어</b><span>Python</span></div>
   <div class="skillrow"><b>LLM·생성형</b><span>파인튜닝(SFT/LoRA/QLoRA/DPO/GRPO), 양자화(GPTQ/AWQ/W4A16/NVFP4/mxfp4/FP8), vLLM 서빙, structured output(xgrammar/GBNF), Unsloth/Axolotl, RAG·retrieval(FAISS·sentence-transformers)·임베딩 파인튜닝(BGE/Stella)·reranking</span></div>
   <div class="skillrow"><b>NLP·CV</b><span>한국어 의료 NLP(텍스트 정규화·분류·교정) · PyTorch, EVA-02·DINO·ViT·DenseNet·EfficientViT, ordinal regression(CORAL/CORN), YOLOv8 detection, Stable Diffusion·TripoSR(3D), ONNX</span></div>
@@ -165,7 +171,7 @@
 </section>
 
 <section>
-  <h2><span class="dot"></span>커뮤니티 · 리더십</h2>
+  <h2>커뮤니티 · 리더십</h2>
   <div class="job">
     <h3>learnup 스터디 모임장 <span style="font-weight:400;color:var(--mut);font-size:14px">· 소모임 앱</span></h3>
     <div class="meta">2025 ~ 2026 · 1주년 2026. 01. 30</div>
@@ -174,13 +180,13 @@
 </section>
 
 <section>
-  <h2><span class="dot"></span>연락처</h2>
+  <h2>연락처</h2>
   <div class="skillrow"><b>Kaggle</b><span><a href="https://www.kaggle.com/aleaiest">aleaiest</a></span></div>
   <div class="skillrow"><b>HuggingFace</b><span><a href="https://huggingface.co/qwertist">qwertist</a></span></div>
   <div class="skillrow"><b>이메일</b><span><a href="mailto:dxodnd@gmail.com">dxodnd@gmail.com</a></span></div>
 </section>
 
 </main>
-<footer>© 2026 Kim Taewoong · AI/NLP Researcher</footer>
+<footer>© 2026 Kim Taewoong · AI/NLP Researcher · 디자인 tokens inspired by Meta Astryx</footer>
 </body>
 </html>
