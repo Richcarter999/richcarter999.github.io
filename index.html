@@ -121,8 +121,12 @@
     <h3>헬스케어 CV</h3>
     <div class="meta">2025. 09 ~</div>
     <p class="win">두피 진단 CV에서 ScalpVision 논문 <span class="hl">재현·초과</span> — macro-F1 <span class="hl">0.744</span> (논문 baseline 0.689 대비 +0.055).</p>
-    <ul><li>EVA-02 Large + Focal loss + 강한 augmentation 두피 진단 분류, 백본·손실·증강 기여도 ablation</li></ul>
-    <div class="chips"><span class="chip">PyTorch</span><span class="chip">EVA-02</span></div>
+    <ul>
+      <li><b>두피 진단</b> — 6종·4중증도 분류, EVA-02 Large + Focal loss + 강증강, 백본·손실·증강 기여도 ablation</li>
+      <li><b>얼굴 피부 부위별 진단</b> — DINO/CORN ordinal regression, 색소침착(볼·이마)·주름(눈가·미간), ONNX 익스포트·임베딩 인덱스</li>
+      <li><b>CV 폭</b> — 피부병변 분류(ISIC), 이미지 분류(EfficientViT/ViT/DenseNet), 객체탐지(YOLOv8), 3D 얼굴 복원(TripoSR)·Stable Diffusion 합성</li>
+    </ul>
+    <div class="chips"><span class="chip">PyTorch</span><span class="chip">EVA-02</span><span class="chip">DINO</span><span class="chip">EfficientViT</span><span class="chip">CORAL/CORN</span><span class="chip">YOLOv8</span><span class="chip">Stable Diffusion</span><span class="chip">TripoSR</span><span class="chip">ONNX</span></div>
   </div>
   <div class="job">
     <h3>대화형 AI 서비스</h3>
@@ -155,7 +159,7 @@
   <h2><span class="dot"></span>보유 기술</h2>
   <div class="skillrow"><b>언어</b><span>Python</span></div>
   <div class="skillrow"><b>LLM·생성형</b><span>파인튜닝(SFT/LoRA/QLoRA/DPO/GRPO), 양자화(GPTQ/AWQ/W4A16/NVFP4/mxfp4/FP8), vLLM 서빙, structured output(xgrammar/GBNF), Unsloth/Axolotl, RAG·retrieval(FAISS·sentence-transformers)·임베딩 파인튜닝(BGE/Stella)·reranking</span></div>
-  <div class="skillrow"><b>NLP·CV</b><span>한국어 의료 NLP(텍스트 정규화·분류·교정) · PyTorch, EVA-02·ViT·DenseNet, diffusion 증강</span></div>
+  <div class="skillrow"><b>NLP·CV</b><span>한국어 의료 NLP(텍스트 정규화·분류·교정) · PyTorch, EVA-02·DINO·ViT·DenseNet·EfficientViT, ordinal regression(CORAL/CORN), YOLOv8 detection, Stable Diffusion·TripoSR(3D), ONNX</span></div>
   <div class="skillrow"><b>백엔드·인프라</b><span>FastAPI, MySQL/SQLAlchemy/Alembic, Celery, Docker, Traefik, Kubernetes/Ceph(rook)/ArgoCD, W&amp;B, AWS·Azure OpenAI</span></div>
   <div class="skillrow"><b>개발 방식</b><span>AI 코딩 에이전트(Claude Code·Codex) 활용 — 스펙·아키텍처·리뷰·검증 직접, 구현 병렬화. (Puzzle 초·중기 코드·Kaggle 솔루션은 직접 손코딩)</span></div>
 </section>
