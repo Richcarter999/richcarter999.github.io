@@ -126,6 +126,7 @@
   <ul>
     <li>LLM 파인튜닝(SFT/LoRA/DPO/GRPO)·양자화(GPTQ/AWQ/W4A16)·vLLM 서빙까지 학습–배포 전 과정 실무.</li>
     <li>Kaggle 개인 참가 — 수학문제 분류 <span class="hl">3위/338팀</span>, AIMO Progress Prize 2 <span class="hl">은메달(87위/2212팀)</span>.</li>
+    <li>클라우드가 아닌 <span class="hl">병원 온프레미스(폐쇄망)</span> 환경에 LLM을 직접 배포·운영하는 것이 핵심 강점.</li>
     <li>의료 한국어 NLP → 정밀의료 R&amp;D → 의료 LLM(GMR)으로 이어진 6년+ 연속 실무.</li>
   </ul>
 </section>
@@ -135,10 +136,11 @@
   <div class="job">
     <h3>Puzzle AI (퍼즐에이아이) — AI/NLP 연구원</h3>
     <div class="meta">2019. 11 ~ 현재 · 6년+</div>
-    <p class="win">의료 LLM(GMR) 학습·양자화·서빙을 담당해 병원용 의무기록 생성 파이프라인을 <span class="hl">프로덕션 서빙까지 구현</span>.</p>
+    <p class="win">의료 LLM(GMR)을 학습·양자화하고 <span class="hl">병원 온프레미스(폐쇄망) 환경에 직접 서빙·운영</span> — 클라우드가 불가능한 병원 인프라에 프로덕션 배포.</p>
     <ul>
+      <li><b>온프레미스 배포·운영</b> — 클라우드 없이 병원 폐쇄망·자체 GPU 서버에 LLM 서빙 (핵심 강점)</li>
       <li>Gemma 2/3/4·Qwen·GPT-OSS 파인튜닝 (LoRA/DPO/GRPO)</li>
-      <li>GPTQ·AWQ·W4A16 양자화로 서빙 속도·비용 최적화</li>
+      <li>GPTQ·AWQ·W4A16 양자화로 서빙 속도·VRAM 최적화</li>
       <li>vLLM 서빙·재현성 디버깅, 구조화 출력(xgrammar/GBNF) 문제 해결</li>
       <li><code>gmr_fastapi_server</code> 백엔드 개발·운영 — 아산·충남대 의료문서(SOAP·퇴원요약·수술기록) 파이프라인</li>
       <li>의료 한국어 NLP → 정밀의료 R&amp;D (유전체 변이·생존분석·증상 추출)</li>
@@ -199,7 +201,7 @@
   <div class="skillrow"><b>언어</b><span>Python</span></div>
   <div class="skillrow"><b>LLM·생성형</b><span>파인튜닝(SFT/LoRA/QLoRA/DPO/GRPO), 양자화(GPTQ/AWQ/W4A16/NVFP4/mxfp4/FP8), vLLM 서빙, structured output(xgrammar/GBNF), Unsloth/Axolotl, RAG·retrieval(FAISS·sentence-transformers)·임베딩 파인튜닝(BGE/Stella)·reranking</span></div>
   <div class="skillrow"><b>NLP·CV</b><span>한국어 의료 NLP(텍스트 정규화·분류·교정) · PyTorch, EVA-02·DINO·ViT·DenseNet·EfficientViT, ordinal regression(CORAL/CORN), YOLOv8 detection, Stable Diffusion·TripoSR(3D), ONNX</span></div>
-  <div class="skillrow"><b>백엔드·인프라</b><span>FastAPI, MySQL/SQLAlchemy/Alembic, Celery, Docker, Traefik, Kubernetes/Ceph(rook)/ArgoCD, W&amp;B, AWS·Azure OpenAI</span></div>
+  <div class="skillrow"><b>백엔드·인프라</b><span>FastAPI, MySQL/SQLAlchemy/Alembic, Celery, Docker, Traefik, Kubernetes/Ceph(rook)/ArgoCD, W&amp;B, <b>온프레미스(폐쇄망) 배포·운영</b>, AWS·Azure OpenAI</span></div>
   <div class="skillrow"><b>개발 방식</b><span>AI 코딩 에이전트(Claude Code·Codex) 활용 — 스펙·아키텍처·리뷰·검증 직접, 구현 병렬화. (Puzzle 초·중기 코드·Kaggle 솔루션은 직접 손코딩)</span></div>
 </section>
 
