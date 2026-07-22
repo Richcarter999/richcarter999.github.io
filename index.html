@@ -31,6 +31,13 @@
   body{margin:0;font-family:var(--font);color:var(--fg);background:var(--body);
     line-height:1.65;font-size:15px;-webkit-font-smoothing:antialiased;letter-spacing:-.1px}
   .wrap{max-width:840px;margin:0 auto;padding:0 22px}
+  .hero-row{display:flex;gap:28px;align-items:center}
+  .avatar{flex:0 0 122px;width:122px;height:122px;border-radius:50%;overflow:hidden;
+    background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;display:grid;place-items:center;
+    font-size:38px;font-weight:800;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  @media(max-width:600px){.hero-row{flex-direction:column;gap:16px;text-align:center}
+    .avatar{width:104px;height:104px;flex-basis:104px}.stats{margin:24px auto 0}}
 
   header{padding:56px 0 30px}
   .kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700}
@@ -83,7 +90,9 @@
 </head>
 <body>
 
-<header><div class="wrap">
+<header><div class="wrap hero-row">
+  <div class="avatar"><img src="assets/profile.jpg" alt="김태웅" onerror="this.replaceWith(document.createTextNode('KTW'))"></div>
+  <div>
   <div class="kicker">AI / NLP Researcher · Medical LLM</div>
   <h1>김태웅 <small>Kim Taewoong</small></h1>
   <div class="role">의료 LLM · 생성형 의무기록(GMR) 연구·개발</div>
@@ -93,6 +102,7 @@
     <div class="stat"><b>3위<span style="font-weight:400"> /338</span></b><span>Kaggle 수학분류</span></div>
     <div class="stat"><b>🥈 은메달</b><span>AIMO2 · 87/2212</span></div>
     <div class="stat"><b>0.744</b><span>ScalpVision F1</span></div>
+  </div>
   </div>
 </div></header>
 
@@ -114,14 +124,11 @@
     <div class="meta">2019. 11 ~ 현재 · 6년+</div>
     <p class="win">의료 LLM(GMR) 학습·양자화·서빙을 담당해 병원용 의무기록 생성 파이프라인을 <span class="hl">프로덕션 서빙까지 구현</span>.</p>
     <ul>
-      <li>Gemma 2/3/4·Qwen2.5·GPT-OSS 파인튜닝(LoRA/DPO/GRPO) — HF 모델 80+, W&amp;B 200+ run</li>
-      <li>GPTQ/AWQ/W4A16/NVFP4/mxfp4 양자화 적용, 양자화 전후 성능·속도 평가(약 2.5배 속도)</li>
-      <li>vLLM 서빙 추론속도 벤치마크 및 재현성·성능저하 원인 디버깅</li>
-      <li>Gemma-4 구조화 출력(JSON/xgrammar) 오류 진단·해결, GBNF 제약 디코딩 적용</li>
-      <li><code>gmr_fastapi_server</code> merged PR 53건 — 라우터별 모델·config 도구, 미들웨어 버그 수정, 보안 하드닝, API/에러 스펙</li>
-      <li>아산·충남대병원 의료문서(SOAP·퇴원요약·수술기록·바이탈) 데이터·모델 파이프라인 구축, 현장 시연 대응</li>
-      <li>(2020~2022) 한국어 의료 NLP — 텍스트 정규화·분류·교정</li>
-      <li>(2022~2024) 정밀의료팀 R&amp;D — 유전체 변이 분석(germline/somatic·VCF·driver mutation·LOH), 생존분석(UK Biobank·ASXL1), 구어체 증상 추출 NLP</li>
+      <li>Gemma 2/3/4·Qwen·GPT-OSS 파인튜닝 (LoRA/DPO/GRPO)</li>
+      <li>GPTQ·AWQ·W4A16 양자화로 서빙 속도·비용 최적화</li>
+      <li>vLLM 서빙·재현성 디버깅, 구조화 출력(xgrammar/GBNF) 문제 해결</li>
+      <li><code>gmr_fastapi_server</code> 백엔드 개발·운영 — 아산·충남대 의료문서(SOAP·퇴원요약·수술기록) 파이프라인</li>
+      <li>의료 한국어 NLP → 정밀의료 R&amp;D (유전체 변이·생존분석·증상 추출)</li>
     </ul>
     <div class="chips"><span class="chip">Python</span><span class="chip">Gemma/Qwen/GPT-OSS</span><span class="chip">LoRA·DPO·GRPO</span><span class="chip">GPTQ·AWQ·W4A16</span><span class="chip">vLLM</span><span class="chip">FastAPI</span><span class="chip">Kubernetes·Ceph</span></div>
     <p class="meta" style="margin-top:13px">오픈소스: vLLM·SGLang·llm-compressor에 Gemma 계열 버그 4건 리포트</p>
